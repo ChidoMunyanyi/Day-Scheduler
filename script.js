@@ -1,4 +1,4 @@
-var currentDay = moment().format('MMMM Do YYYY')
+var currentDay = moment().format('MMMM Do YYYY, h:mm a')
 $("#currentDay").text(currentDay)
 // Add Click Event to save button that grabs value of text area and saves to local storage //
 $(".saveBtn").on("click", function() {
@@ -17,3 +17,18 @@ $("#14.description").val(localStorage.getItem("14"))
 $("#15 .description").val(localStorage.getItem("15"))
 $("#16 .description").val(localStorage.getItem("16"))
 $("#17 .description").val(localStorage.getItem("17"))
+
+// Add loop to change hour colors according to current time //
+$(".time-block").each(function(){
+    var hour = moment().hours()
+    var difTime = $(this).attr("id")
+    if(difTime < hour) {
+        $(this).addClass("past")
+    }
+    else if(difTime == hour) {
+        $(this).addClass("present")
+    }
+    else if(difTime > hour) {
+        $(this).addClass("future")
+    }
+})
